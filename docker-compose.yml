@@ -15,7 +15,7 @@ services:
       MAUTIC_DB_PASSWORD: pass4test
     working_dir: /var/www/html
     volumes:
-      - .:/app:cached
+      - mautic-web:/var/www/html
     networks:
       mautic_network:
         aliases:
@@ -38,3 +38,4 @@ networks:
 
 volumes:
   mysql_data:
+  mautic-web:
