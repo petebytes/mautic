@@ -8,11 +8,17 @@ services:
     ports:
       - 8080:80
     environment:
+      MAUTIC_VERSION: 2.15.3
       MAUTIC_TRUSTED_PROXIES: 0.0.0.0/0
       MAUTIC_DB_HOST: mautic_db
       MAUTIC_DB_USER: root
-      MAUTIC_DB_NAME: mautic
+      MAUTIC_DB_NAME: mautic_dev_db
       MAUTIC_DB_PASSWORD: pass4test
+      MAUTIC_ADMIN_USERNAME: pete
+      MAUTIC_ADMIN_PASSWORD: pass4test
+      MAUTIC_FROM_NAME: 'John Doe'
+      MAUTIC_FROM_EMAIL: 'info@acme.com'
+      MAUTIC_RUN_CRON_JOBS: true
     working_dir: /var/www/html
     volumes:
       - mautic-web:/var/www/html
