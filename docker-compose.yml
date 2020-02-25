@@ -16,9 +16,6 @@ services:
       MAUTIC_DB_PASSWORD: pass4test
       MAUTIC_ADMIN_USERNAME: pete
       MAUTIC_ADMIN_PASSWORD: pass4test
-      MAUTIC_FROM_NAME: John Doe
-      MAUTIC_FROM_EMAIL: info@acme.com
-      MAUTIC_RUN_CRON_JOBS: true
     working_dir: /var/www/html
     volumes:
       - mautic-web:/var/www/html
