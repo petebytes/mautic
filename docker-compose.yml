@@ -1,0 +1,43 @@
+version : "3.5"
+
+services:
+  server:
+    image: mautic/mautic:latest
+    depends_on:
+      - mysql_db
+    ports:
+      - 8080:80
+    environment:
+      MAUTIC_TRUSTED_PROXIES: 0.0.0.0/0
+      MAUTIC_DB_HOST: mautic_db
+      MAUTIC_DB_USER: root
+      MAUTIC_DB_NAME: mautic_dev_db
+      MAUTIC_DB_PASSWORD: pass4test
+      MAUTIC_ADMIN_USERNAME: pete
+      MAUTIC_ADMIN_PASSWORD: pass4test
+    working_dir: /var/www/html
+    volumes:
+      - mautic-web:/var/www/html
+    networks:
+      mautic_network:
+        aliases:
+          - mautic
+          - mautic-server
+
+  mysql_db:
+    image: mysql:5.6
+    environment:
+      - MYSQL_ROOT_PASSWORD=pass4test
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      mautic_network:
+        aliases:
+          - mautic_db
+
+networks:
+  mautic_network:
+
+volumes:
+  mysql_data:
+  mautic-web:
